@@ -1,0 +1,198 @@
+:root {
+  --page: #f6f7f9;
+  --surface: #ffffff;
+  --surface-subtle: #f1f3f6;
+  --border: #dfe3ea;
+  --border-strong: #c3cad6;
+  --text: #1b2330;
+  --muted: #566176;
+  --accent: #2447c4;
+  --accent-hover: #1c3aa8;
+  --on-accent: #ffffff;
+  --link: #1f45c0;
+  --focus: #2447c4;
+  --row-hover: #f4f6fb;
+  --row-open: #eef2fc;
+  --error-text: #b42318;
+  --error-bg: #fdecea;
+  --warning-text: #8a4b00;
+  --warning-bg: #fff2d9;
+  --info-text: #35507d;
+  --info-bg: #e8eef8;
+  --ok-text: #0f6b3f;
+  --ok-bg: #e6f5ec;
+  color-scheme: light;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--page);
+}
+
+:root[data-theme='dark'] {
+  --page: #0f131a;
+  --surface: #171c25;
+  --surface-subtle: #1e2531;
+  --border: #2a3342;
+  --border-strong: #3c475a;
+  --text: #e6eaf1;
+  --muted: #a2adbf;
+  --accent: #4a6fe8;
+  --accent-hover: #6384f0;
+  --on-accent: #ffffff;
+  --link: #9db6ff;
+  --focus: #9db6ff;
+  --row-hover: #1c2330;
+  --row-open: #212a3a;
+  --error-text: #ffa39b;
+  --error-bg: #3b1f22;
+  --warning-text: #f2c46e;
+  --warning-bg: #38301a;
+  --info-text: #a9bde3;
+  --info-bg: #222d42;
+  --ok-text: #86dcab;
+  --ok-bg: #173325;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+dl,
+dd {
+  margin: 0;
+}
+
+a {
+  color: var(--link);
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: var(--surface-subtle);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+}
+
+button.primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+input,
+select {
+  min-height: 32px;
+  width: 100%;
+  padding: 0 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--surface);
+}
+
+:where(a, button, input, select, summary):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.badge {
+  display: inline-flex;
+  gap: 4px;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge.error {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+.badge.warning {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.badge.info {
+  background: var(--info-bg);
+  color: var(--info-text);
+}
+
+.badge.ok {
+  background: var(--ok-bg);
+  color: var(--ok-text);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.spinner {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-right: 6px;
+  vertical-align: -0.1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2.4s;
+  }
+}

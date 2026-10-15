@@ -1,0 +1,20 @@
+# Segredos e configuração local
+.env
+.env.local
+
+# Dependências e arquivos gerados
+node_modules/
+dist/
+*.tsbuildinfo
+coverage/
+
+# Notas internas que não vão para o repositório
+docs/internal/
+
+# Ferramentas de agente e editor
+.agents/
+.memory/
+opencode.json
+.ignore
+.DS_Store
+npm-debug.log*

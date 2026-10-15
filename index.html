@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Macaria QA — Consistência de issues</title>
+    <script>
+      var theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      try {
+        var savedTheme = localStorage.getItem('qa-dashboard-theme')
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          theme = savedTheme
+        }
+      } catch (error) {}
+      document.documentElement.dataset.theme = theme
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+node_modules
+dist
+.agents
+.memory
+package-lock.json
+tsconfig.tsbuildinfo
+*.md
+*.MD
