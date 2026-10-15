@@ -5,7 +5,7 @@ export default defineConfig(({ mode }) => {
   const environment: Record<string, string> =
     mode === 'test' ? {} : loadEnv(mode, process.cwd(), '')
   return {
-    base: process.env.GITHUB_PAGES === 'true' ? './' : '/',
+    base: process.env.GITHUB_PAGES === 'true' ? '/dashboard-macaria/' : '/',
     plugins: [vue()],
     define: {
       __GIT_TOKEN__: JSON.stringify(environment.GIT_TOKEN ?? ''),

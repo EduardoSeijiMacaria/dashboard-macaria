@@ -26,7 +26,15 @@ npm run format
 
 `npm run format` aplica o Prettier (2 espaços, 100 colunas). `npm run format:check` só verifica.
 
-O build com `GITHUB_PAGES=true` usa caminhos relativos, mas não publique o resultado em hospedagem pública: veja o aviso acima. A aplicação é uma tela única, portanto não exige rota de servidor para refresh.
+## Deploy no GitHub Pages
+
+O workflow `.github/workflows/deploy.yml` roda a cada push na `main` (e manualmente, em Actions → Deploy to GitHub Pages → Run workflow). Ele instala com `npm ci`, roda os testes, gera o build com `GITHUB_PAGES=true` (base `/dashboard-macaria/`) e publica `dist/` pelo fluxo oficial de artifacts. Não existe branch `gh-pages`.
+
+Configuração manual, uma vez: Settings → Pages → Build and deployment → Source → **GitHub Actions**. Opcionalmente, defina a variável `PROJECT_NUMBER` em Settings → Secrets and variables → Actions → Variables.
+
+URL: https://eduardoseijimacaria.github.io/dashboard-macaria/
+
+O workflow não recebe `GIT_TOKEN`, de propósito: o token entraria no JavaScript público. Sem ele, o site publicado abre e mostra "token não configurado". A navegação usa hash (`#/sobre`), então recarregar Dashboard ou Sobre funciona sem rota de servidor.
 
 ## Fonte de dados
 
