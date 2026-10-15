@@ -30,7 +30,7 @@ npm run format
 
 O workflow `.github/workflows/deploy.yml` roda a cada push na `main` (e manualmente, em Actions → Deploy to GitHub Pages → Run workflow). Ele instala com `npm ci`, roda os testes, gera o build com `GITHUB_PAGES=true` (base `/dashboard-macaria/`) e publica `dist/` pelo fluxo oficial de artifacts. Não existe branch `gh-pages`.
 
-Configuração manual, uma vez: Settings → Pages → Build and deployment → Source → **GitHub Actions**. Opcionalmente, defina a variável `PROJECT_NUMBER` em Settings → Secrets and variables → Actions → Variables.
+Configuração manual, uma vez: Settings → Pages → Build and deployment → Source → **GitHub Actions**. O workflow fixa `REPOSITORY_URL` (`EduardoSeijiMacaria/dashboard-macaria`) e `PROJECT_NUMBER` (`3`) no próprio YAML; para apontar para outro repositório ou Project, edite esses dois valores em `.github/workflows/deploy.yml`.
 
 URL: https://eduardoseijimacaria.github.io/dashboard-macaria/
 

@@ -29,8 +29,8 @@ jobs:
         env:
           GITHUB_PAGES: 'true'
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
-          REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
-          PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER }}
+          REPOSITORY_URL: https://github.com/EduardoSeijiMacaria/dashboard-macaria
+          PROJECT_NUMBER: '3'
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
