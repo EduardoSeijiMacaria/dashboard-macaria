@@ -90,10 +90,10 @@ describe('AppFooter', () => {
     expect(markup).toContain('rel="noopener noreferrer"')
   })
 
-  it('always links to the About page', async () => {
+  it('does not link to the About page', async () => {
     const markup = await renderFooter('')
 
-    expect(markup).toContain('href="#/sobre"')
+    expect(markup).not.toContain('href="#/sobre"')
   })
 
   it('shows no repository link when no repository is known', async () => {

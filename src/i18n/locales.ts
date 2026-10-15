@@ -10,6 +10,12 @@ export const localeNames: Record<Locale, string> = {
   es: 'Español'
 }
 
+export const localeCodes: Record<Locale, string> = {
+  'pt-BR': 'PT',
+  en: 'EN',
+  es: 'ES'
+}
+
 const localeStorageKey = 'qa-dashboard-locale'
 
 export function isLocale(value: unknown): value is Locale {

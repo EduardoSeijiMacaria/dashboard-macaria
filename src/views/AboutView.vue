@@ -169,7 +169,7 @@ onMounted(() => heading.value?.focus())
       <p class="developer-name">{{ t('about.developedBy', { name: developer.name }) }}</p>
       <p>{{ t('about.purpose') }}</p>
       <p v-if="contact" class="contact">
-        {{ t('about.contactBy', { channel: contact.name }) }}
+        {{ t('about.contactInvite') }}
         <a class="contact-link" :href="contact.url" target="_blank" rel="noopener noreferrer">
           {{ contact.display ?? contact.name }}
         </a>
@@ -401,18 +401,8 @@ ol {
 }
 
 .contact-link {
-  display: inline-block;
-  padding: 8px 14px;
-  border: 1px solid var(--accent);
-  border-radius: 6px;
   color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.contact-link:hover {
-  background: var(--accent);
-  color: var(--on-accent);
+  text-decoration: underline;
 }
 
 .muted {

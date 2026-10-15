@@ -67,7 +67,7 @@ describe('AboutView', () => {
     expect(markup).not.toContain('mailto:')
   })
 
-  it('shows the channel and the address as a working link when a contact is configured', async () => {
+  it('shows the invitation and the address as a working link when a contact is configured', async () => {
     const markup = await renderAbout({
       name: 'QA Macaria',
       contact: {
@@ -78,7 +78,7 @@ describe('AboutView', () => {
     })
 
     expect(markup).toContain('href="mailto:qa@example.test"')
-    expect(markup).toContain('Contato por e-mail:')
+    expect(markup).toContain('Dúvidas, sugestões, relatos de problemas etc.?')
     expect(markup).toContain('qa@example.test</a>')
     expect(markup).not.toContain('Contato ainda não configurado')
   })

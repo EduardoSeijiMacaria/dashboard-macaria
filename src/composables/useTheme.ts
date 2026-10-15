@@ -35,6 +35,15 @@ export function oppositeTheme(theme: Theme): Theme {
   return theme === 'dark' ? 'light' : 'dark'
 }
 
+const themeTransitionMs = 450
+
+function applyThemeSmoothly(theme: Theme) {
+  const root = document.documentElement
+  root.classList.add('theme-changing')
+  root.dataset.theme = theme
+  window.setTimeout(() => root.classList.remove('theme-changing'), themeTransitionMs)
+}
+
 export function useTheme() {
   const getBrowserStorage = () => window.localStorage
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -45,7 +54,7 @@ export function useTheme() {
 
   function toggleTheme() {
     theme.value = oppositeTheme(theme.value)
-    document.documentElement.dataset.theme = theme.value
+    applyThemeSmoothly(theme.value)
     saveTheme(getBrowserStorage, theme.value)
   }
 

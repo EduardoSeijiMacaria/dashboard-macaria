@@ -130,16 +130,16 @@ Presents the tool in Portuguese in six blocks: an introduction, four capability 
 
 ## Cabeçalho, conexão e configurações
 
-The header puts navigation first: "Macaria QA" (a link to the dashboard), then "Dashboard" and "Sobre" with the open page marked (`aria-current` and an underline). On the right it shows a discreet connection text, the theme button, and a "Configurações" button (`AppIcon` gear and text; icon only on small screens, with the accessible name kept). A compact line above the filters shows the organization, the repository, and the Project. "Configurações" opens a side panel with the full connection details. The footer has a discreet text, a "Sobre" link, and a link to the configured repository. Neither the header, the panel, nor the footer calls the API.
+The header puts navigation first: "Macaria QA" (a link to the dashboard), then "Dashboard" and "Sobre" with the open page marked (`aria-current` and an underline). On the right it shows a discreet connection text, the theme button, and a "Configurações" button (`AppIcon` gear and text; icon only on small screens, with the accessible name kept). A compact line above the filters shows the organization, the repository, and the Project. "Configurações" opens a side panel with the full connection details. The footer has a discreet text and a link to the configured repository. Neither the header, the panel, nor the footer calls the API.
 
 **Flow:**
 
 1. `src/composables/useAuditDashboard.ts` — `syncGithub` sets `organizationName`, `repositoryName`, and `projectLabel`; `connectionStatus` is `checking` until the first answer, `connected` once the GitHub answers, and `disconnected` after a failed sync (a cancel keeps `connected`); `repositoryWebUrl` builds the GitHub address
 2. `src/views/DashboardView.vue` — holds `isSettingsOpen`; the header button and the "Configurar conexão" button call `openSettings`; the panel emits `close`
-3. `src/components/AppHeader.vue` — brand link, page links, connection text, theme button, and the Settings button
+3. `src/components/AppHeader.vue` — brand link, page links, connection text, language buttons, theme icon button, and the Settings button
 4. `src/components/SettingsPanel.vue` — a native `<dialog>` opened with `showModal()`: it traps the focus, closes with Escape, the "Fechar" button, or a click on the backdrop, and returns the focus to the element that opened it; it lists organization, repository, Project, token state (never the value), and the Project failure reason
 5. `src/components/ConnectionSummary.vue` — the compact line above the filters, shown once a connection is known
-6. `src/components/AppFooter.vue` — text, "Sobre" link, and repository link
+6. `src/components/AppFooter.vue` — text and repository link
 
 **Branch:** opening or closing the panel never reads from or changes the data. With `disconnected`, the results area shows the error and a "Configurar conexão" button that opens the panel. The connection values come from `.env`, so the panel has no connect, switch, or disconnect action.
 
@@ -147,7 +147,7 @@ The header puts navigation first: "Macaria QA" (a link to the dashboard), then "
 
 ## Idioma
 
-Shows the interface in `pt-BR`, `en`, or `es`. The selector in the header switches at once, with no reload and no request. The choice is saved in `localStorage` (`qa-dashboard-locale`), apart from the theme. With no saved choice, the browser language decides, and `pt-BR` is the fallback. Text from the GitHub (titles, assignees, labels, milestones, field names and values, names of Projects and repositories) is never translated.
+Shows the interface in `pt-BR`, `en`, or `es`. The PT, EN and ES buttons in the header switch at once, with no reload and no request. The choice is saved in `localStorage` (`qa-dashboard-locale`), apart from the theme. With no saved choice, the browser language decides, and `pt-BR` is the fallback. Text from the GitHub (titles, assignees, labels, milestones, field names and values, names of Projects and repositories) is never translated.
 
 **Flow:**
 
@@ -157,7 +157,7 @@ Shows the interface in `pt-BR`, `en`, or `es`. The selector in the header switch
 4. `src/i18n/index.ts` and `src/i18n/messages/` — the `vue-i18n` instance and one catalog per language, with the same keys
 5. `src/i18n/translate.ts` — `t`, `translateMessage`, `translateText`, `formatList`, and `formatNumber`; they read the active language, so a switch updates every screen
 6. `src/rules/` and `src/services/appError.ts` — rules, errors, and statuses hold a message key and its data (`MessageRef`); the screen translates them, so the findings already shown change language with no new evaluation
-7. `src/components/AppHeader.vue` — the language selector; `DashboardView.vue` wires it to `useLocale`
+7. `src/components/AppHeader.vue` — the language buttons (`LanguageSwitch.vue`); `DashboardView.vue` wires it to `useLocale`
 
 **Branch:** a blocked `localStorage` or an invalid saved value falls back to the browser language, then to `pt-BR`; the switch still works for the session.
 
@@ -171,7 +171,7 @@ Switches the dashboard between light and dark colors. The first visit follows th
 
 1. `index.html` — an inline script sets `data-theme` on the page root before the first paint
 2. `src/composables/useTheme.ts` — `useTheme` resolves the theme from the saved choice or the system setting, and `toggleTheme` flips and saves it
-3. `src/components/ThemeToggle.vue` — the button states the action in Portuguese and emits `toggle`
+3. `src/components/ThemeToggle.vue` — the icon-only button (sun or moon) names the action for assistive technology and emits `toggle`
 4. `src/components/AppHeader.vue` — places the button in the header; `DashboardView.vue` wires it to `useTheme`
 5. `src/style.css` — color tokens on `:root` and `:root[data-theme=dark]`
 

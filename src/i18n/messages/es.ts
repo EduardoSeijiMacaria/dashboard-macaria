@@ -15,8 +15,8 @@ export const es: MessageSchema<typeof ptBR> = {
     label: 'Idioma'
   },
   theme: {
-    useLight: '☀ Tema claro',
-    useDark: '☾ Tema oscuro'
+    useLight: 'Tema claro',
+    useDark: 'Tema oscuro'
   },
   connection: {
     checking: '… Conectando',
@@ -285,7 +285,7 @@ export const es: MessageSchema<typeof ptBR> = {
     developedBy: 'Desarrollado por {name}',
     purpose:
       'Finalidad: apoyar el trabajo de QA en la identificación de inconsistencias de las issues.',
-    contactBy: 'Contacto por {channel}:',
+    contactInvite: '¿Dudas, sugerencias, reportes de problemas, etc.? Escriba a',
     contactMissing: 'Contacto aún no configurado',
     repositoryNote:
       'El repositorio analizado es la fuente de los datos. No es el canal de contacto del desarrollador.'

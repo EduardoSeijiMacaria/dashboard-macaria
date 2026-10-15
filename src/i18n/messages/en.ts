@@ -15,8 +15,8 @@ export const en: MessageSchema<typeof ptBR> = {
     label: 'Language'
   },
   theme: {
-    useLight: '☀ Light theme',
-    useDark: '☾ Dark theme'
+    useLight: 'Light theme',
+    useDark: 'Dark theme'
   },
   connection: {
     checking: '… Connecting',
@@ -284,7 +284,7 @@ export const en: MessageSchema<typeof ptBR> = {
     developerTitle: 'Development and contact',
     developedBy: 'Developed by {name}',
     purpose: 'Purpose: to support QA work in finding inconsistencies in issues.',
-    contactBy: 'Contact by {channel}:',
+    contactInvite: 'Questions, suggestions, problem reports, etc.? Write to',
     contactMissing: 'Contact not configured yet',
     repositoryNote:
       'The analyzed repository is the data source. It is not the developer’s contact channel.'

@@ -74,7 +74,7 @@ describe('localized interface', () => {
     for (const text of expectedTexts) expect(markup).toContain(text)
   })
 
-  it('offers the three languages by their own names, whatever the active language', async () => {
+  it('offers PT, EN and ES buttons named in their own language, whatever the active language', async () => {
     for (const locale of supportedLocales) {
       setActiveLocale(locale)
 
@@ -86,12 +86,15 @@ describe('localized interface', () => {
       })
 
       for (const name of ['Português (Brasil)', 'English', 'Español']) {
-        expect(markup).toContain(name)
+        expect(markup).toContain(`aria-label="${name}"`)
+      }
+      for (const code of ['PT', 'EN', 'ES']) {
+        expect(markup).toContain(`${code}\n`.trim())
       }
     }
   })
 
-  it('gives the language selector an accessible name', async () => {
+  it('groups the language buttons under an accessible name and marks the active one', async () => {
     setActiveLocale('en')
 
     const markup = await render(AppHeader, {
@@ -101,7 +104,12 @@ describe('localized interface', () => {
       locale: 'en'
     })
 
-    expect(markup).toMatch(/<select[^>]*aria-label="Language"/)
+    expect(markup).toMatch(
+      /role="group"[^>]*aria-label="Language"|aria-label="Language"[^>]*role="group"/
+    )
+    expect(markup).toMatch(
+      /aria-label="English"[^>]*aria-pressed="true"|aria-pressed="true"[^>]*aria-label="English"/
+    )
   })
 
   it.each([

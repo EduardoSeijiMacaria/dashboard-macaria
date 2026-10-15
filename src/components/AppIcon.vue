@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-export type IconName = 'settings' | 'database' | 'alert' | 'filter' | 'list' | 'shield' | 'user'
+export type IconName =
+  'settings' | 'database' | 'alert' | 'filter' | 'list' | 'shield' | 'user' | 'sun' | 'moon'
 
 interface IconShape {
   tag: 'path' | 'circle' | 'ellipse' | 'line' | 'polygon'
@@ -47,6 +48,18 @@ const iconShapes: Record<IconName, IconShape[]> = {
     { tag: 'line', attributes: { x1: '3', y1: '18', x2: '3.01', y2: '18' } }
   ],
   shield: [{ tag: 'path', attributes: { d: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' } }],
+  sun: [
+    { tag: 'circle', attributes: { cx: '12', cy: '12', r: '4' } },
+    { tag: 'line', attributes: { x1: '12', y1: '2', x2: '12', y2: '4' } },
+    { tag: 'line', attributes: { x1: '12', y1: '20', x2: '12', y2: '22' } },
+    { tag: 'line', attributes: { x1: '4.93', y1: '4.93', x2: '6.34', y2: '6.34' } },
+    { tag: 'line', attributes: { x1: '17.66', y1: '17.66', x2: '19.07', y2: '19.07' } },
+    { tag: 'line', attributes: { x1: '2', y1: '12', x2: '4', y2: '12' } },
+    { tag: 'line', attributes: { x1: '20', y1: '12', x2: '22', y2: '12' } },
+    { tag: 'line', attributes: { x1: '4.93', y1: '19.07', x2: '6.34', y2: '17.66' } },
+    { tag: 'line', attributes: { x1: '17.66', y1: '6.34', x2: '19.07', y2: '4.93' } }
+  ],
+  moon: [{ tag: 'path', attributes: { d: 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z' } }],
   user: [
     { tag: 'path', attributes: { d: 'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2' } },
     { tag: 'circle', attributes: { cx: '12', cy: '7', r: '4' } }

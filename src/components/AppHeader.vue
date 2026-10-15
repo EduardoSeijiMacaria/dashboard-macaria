@@ -2,10 +2,11 @@
 import { computed } from 'vue'
 import type { ConnectionStatus } from '../composables/useAuditDashboard'
 import type { Page } from '../composables/useCurrentPage'
-import { localeNames, supportedLocales, type Locale } from '../i18n/locales'
+import type { Locale } from '../i18n/locales'
 import { t } from '../i18n/translate'
 import type { Theme } from '../composables/useTheme'
 import AppIcon from './AppIcon.vue'
+import LanguageSwitch from './LanguageSwitch.vue'
 import ThemeToggle from './ThemeToggle.vue'
 
 const props = defineProps<{
@@ -14,14 +15,9 @@ const props = defineProps<{
   theme: Theme
   locale: Locale
 }>()
-const emit = defineEmits<{ toggleTheme: []; openSettings: []; changeLocale: [locale: Locale] }>()
+defineEmits<{ toggleTheme: []; openSettings: []; changeLocale: [locale: Locale] }>()
 
 const connectionText = computed(() => t(`connection.${props.connectionStatus}`))
-
-function emitSelectedLocale(event: Event): void {
-  const selectedLocale = (event.target as HTMLSelectElement).value as Locale
-  emit('changeLocale', selectedLocale)
-}
 </script>
 
 <template>
@@ -40,16 +36,7 @@ function emitSelectedLocale(event: Event): void {
 
       <div class="actions">
         <p :class="['connection', connectionStatus]" role="status">{{ connectionText }}</p>
-        <select
-          class="language"
-          :aria-label="t('language.label')"
-          :value="locale"
-          @change="emitSelectedLocale"
-        >
-          <option v-for="option in supportedLocales" :key="option" :value="option">
-            {{ localeNames[option] }}
-          </option>
-        </select>
+        <LanguageSwitch :locale="locale" @change="$emit('changeLocale', $event)" />
         <ThemeToggle :theme="theme" @toggle="$emit('toggleTheme')" />
         <button
           type="button"
@@ -138,13 +125,6 @@ function emitSelectedLocale(event: Event): void {
 
 .connection.disconnected {
   color: var(--error-text);
-}
-
-.language {
-  width: auto;
-  min-width: 0;
-  max-width: 11rem;
-  padding-right: 4px;
 }
 
 .settings {

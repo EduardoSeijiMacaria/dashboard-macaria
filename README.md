@@ -46,7 +46,7 @@ Se a consulta ao Project falhar (por exemplo, token sem a permissão Projects), 
 
 ## Idiomas
 
-A interface existe em português do Brasil, inglês e espanhol. O seletor no cabeçalho troca na hora, sem recarregar e sem nova consulta ao GitHub, e os apontamentos já exibidos mudam de idioma junto. A escolha fica no `localStorage` (`qa-dashboard-locale`), separada do tema. Sem escolha salva, vale o idioma do navegador (`pt`, `en` ou `es`); caso contrário, `pt-BR`.
+A interface existe em português do Brasil, inglês e espanhol. Os botões PT, EN e ES no cabeçalho trocam na hora, sem recarregar e sem nova consulta ao GitHub, e os apontamentos já exibidos mudam de idioma junto. A escolha fica no `localStorage` (`qa-dashboard-locale`), separada do tema. Sem escolha salva, vale o idioma do navegador (`pt`, `en` ou `es`); caso contrário, `pt-BR`.
 
 Só os textos da aplicação são traduzidos. Títulos, responsáveis, labels, milestones, nomes e valores dos campos do Project e nomes de repositórios vêm do GitHub e aparecem como foram recebidos. As traduções ficam em `src/i18n/messages/` (um arquivo por idioma, com as mesmas chaves). Para acrescentar um texto, escreva a chave nos três arquivos; o TypeScript e os testes recusam um idioma com chave faltando.
 

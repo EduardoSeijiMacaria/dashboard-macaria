@@ -12,8 +12,8 @@ export const ptBR = {
     label: 'Idioma'
   },
   theme: {
-    useLight: '☀ Tema claro',
-    useDark: '☾ Tema escuro'
+    useLight: 'Tema claro',
+    useDark: 'Tema escuro'
   },
   connection: {
     checking: '… Conectando',
@@ -278,7 +278,7 @@ export const ptBR = {
     developerTitle: 'Desenvolvimento e contato',
     developedBy: 'Desenvolvido pelo {name}',
     purpose: 'Finalidade: apoiar o trabalho de QA na identificação de inconsistências das issues.',
-    contactBy: 'Contato por {channel}:',
+    contactInvite: 'Dúvidas, sugestões, relatos de problemas etc.? Escreva para',
     contactMissing: 'Contato ainda não configurado',
     repositoryNote:
       'O repositório analisado é a fonte dos dados. Ele não é o canal de contato do desenvolvedor.'

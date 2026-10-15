@@ -9,7 +9,6 @@ defineProps<{ repositoryUrl: string }>()
     <div class="inner">
       <p>{{ t('footer.text') }}</p>
       <nav class="links" :aria-label="t('footer.label')">
-        <a href="#/sobre">{{ t('nav.about') }}</a>
         <a v-if="repositoryUrl" :href="repositoryUrl" target="_blank" rel="noopener noreferrer">
           {{ t('footer.openRepository') }} ↗
         </a>
