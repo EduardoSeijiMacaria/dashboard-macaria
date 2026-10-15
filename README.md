@@ -34,7 +34,9 @@ Configuração manual, uma vez: Settings → Pages → Build and deployment → 
 
 URL: https://eduardoseijimacaria.github.io/dashboard-macaria/
 
-O workflow não recebe `GIT_TOKEN`, de propósito: o token entraria no JavaScript público. Sem ele, o site publicado abre e mostra "token não configurado". A navegação usa hash (`#/sobre`), então recarregar Dashboard ou Sobre funciona sem rota de servidor.
+O workflow lê o token do secret `GIT_TOKEN` (Settings → Secrets and variables → Actions → Secrets) e o grava no JavaScript do site, como no build local. **Num site público, qualquer pessoa consegue ler esse token no JavaScript.** Use um token fine-grained somente leitura, com o menor acesso possível, e troque-o se necessário. Sem o secret, o site abre e mostra "token não configurado".
+
+A navegação usa hash (`#/sobre`), então recarregar Dashboard ou Sobre funciona sem rota de servidor.
 
 ## Fonte de dados
 

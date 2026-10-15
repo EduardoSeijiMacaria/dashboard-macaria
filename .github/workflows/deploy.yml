@@ -28,6 +28,7 @@ jobs:
       - run: npm run build
         env:
           GITHUB_PAGES: 'true'
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
           REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
           PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER }}
       - uses: actions/configure-pages@v6
